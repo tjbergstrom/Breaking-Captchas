@@ -22,10 +22,19 @@ find contours, get label from filename
 
 3. Use the extracted characters to train a model.
 
-4. Tune the model for better accuracy.
+4. Try it out trying to break / crack / decode input captchas.
 
-5. Try it out trying to break / crack / decode unlabeled input captchas.
+Here are some preliminary results after training with only 1,000 images and 10 training epochs:
 
-6. Get more labeled captchas and different types and train other models.
+![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord.gif)
 
-7. Start over with trying out better or different data collection.
+So it's definitely do-able! Fom here I could start over and build a proper model with the 10,000 images that I have, or try
+something more challenging - this model can only break these specific captchas, and I might be more interested in collecting
+other more challenging types.
+
+5. Get more labeled captchas and different types and train other models.
+
+6. Start over with trying out better or different data collection.
+
+7. Tune a really good model and try to increase it's accuracy (with better data and hyper-tuning).
+
