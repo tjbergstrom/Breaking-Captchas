@@ -29,18 +29,18 @@ Here are some preliminary results after training with only 1,000 images and 10 t
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord3.gif)
 
 #
-
+<br>
 #
 
 So it's definitely do-able! Fom here I could start over and build a proper model with the 10,000 images that I have, or try
 something more challenging - this model can only break these specific captchas, and I might be more interested in collecting
 other more challenging types.
 
+#
+<br>
+#
+
 It also appears that, moving forward, you need to process the images better to extract the text:
-
-#
-
-#
 
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord2.gif)
 
