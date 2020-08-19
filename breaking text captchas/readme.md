@@ -44,7 +44,17 @@ other more challenging types.
 
 It also appears that, moving forward, you need to process the images better to extract the text:
 
+(the four squares on the right are not just a close up, they are the extracted images created by finding contours, and the model trains with them)
+
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord2.gif)
+
+This improves accuracy just a little:
+
+![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord4.gif)
+
+After training with about 8,000 captchas and testing with almost 2,000 I can get one out of four correct:
+
+![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/ss7.png)
 
 5. Get more labeled captchas and different types and train other models.
 
