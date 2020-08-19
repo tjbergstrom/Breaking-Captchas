@@ -66,7 +66,9 @@ This improves accuracy just a little:
 <br>
 
 
-After training with about 8,000 captchas and testing with almost 2,000 I can get one out of four correct:
+After training with about 8,000 captchas and testing with almost 2,000 it can break about one out of four captchas.
+The model is at 85% accuracy per each character, which would be about 52% per four characters in a row, if the characters that it gets 
+wrong were evenly distributed. I will keep testing.
 
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/ss7.png)
 
