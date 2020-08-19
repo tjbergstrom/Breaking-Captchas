@@ -54,7 +54,7 @@ for img_path in img_paths:
 
 
     i = 0
-    while i < 99:
+    while i < 4:
         img = cv2.adaptiveThreshold(img, 255,
             cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
         img = cv2.threshold(img, 0, 255,
