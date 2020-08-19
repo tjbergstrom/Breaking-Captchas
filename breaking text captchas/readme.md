@@ -31,6 +31,7 @@ Here are some preliminary results after training with only 1,000 images and 10 t
 
 <br>
 <br>
+<br>
 
 
 So it's definitely do-able! Fom here I could start over and build a proper model with the 10,000 images that I have, or try
@@ -38,6 +39,7 @@ something more challenging - this model can only break these specific captchas, 
 other more challenging types.
 
 
+<br>
 <br>
 <br>
 
@@ -48,9 +50,21 @@ It also appears that, moving forward, you need to process the images better to e
 
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord2.gif)
 
+
+<br>
+<br>
+<br>
+<br>
+
+
 This improves accuracy just a little:
 
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord4.gif)
+
+
+<br>
+<br>
+
 
 After training with about 8,000 captchas and testing with almost 2,000 I can get one out of four correct:
 
