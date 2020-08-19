@@ -25,7 +25,7 @@ data = []
 labels = []
 img_paths = sorted(list(paths.list_images(dataset)))
 img_show = False
-model = load_model("model3.model")
+model = load_model("model5.model")
 lb = pickle.loads(open("lb.pickle", "rb").read())
 total_correct = 0
 
