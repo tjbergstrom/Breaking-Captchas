@@ -31,10 +31,13 @@ class Pprocess:
             # Extract each char from the captcha
             img = cv2.imread(img_path)
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            img = cv2.adaptiveThreshold(img, 255,
-                cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
-            img = cv2.threshold(img, 0, 255,
-                cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
+            i = 0
+            while i < 5:
+                img = cv2.adaptiveThreshold(img, 255,
+                    cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 115, 1)
+                img = cv2.threshold(img, 0, 255,
+                    cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
+                i += 1
             contours = cv2.findContours(img.copy(),
                 cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             contours = contours[0]

@@ -57,7 +57,7 @@ It also appears that, moving forward, you need to process the images better to e
 <br>
 
 
-This improves accuracy just a little:
+Extra thresholding improves accuracy just a little:
 
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord4.gif)
 
@@ -71,6 +71,14 @@ The model is at 85% accuracy per each character, which would be about 52% per fo
 wrong were evenly distributed. I will keep testing.
 
 ![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/ss7.png)
+
+<br>
+
+And with better processing, including passing two thresholding filters 5 times, accuracy is up to breaking 2 out of 5 captchas:
+
+![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/ss8.png)
+
+<br>
 
 5. Get more labeled captchas and different types and train other models.
 
