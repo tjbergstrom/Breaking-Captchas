@@ -86,3 +86,9 @@ And with better processing, including passing two thresholding filters 5 times, 
 
 7. Tune a really good model and try to increase it's accuracy (with better data and hyper-tuning).
 
+<br>
+<br>
+
+(10.) Make a demo?
+
+![alt text](https://raw.githubusercontent.com/tjbergstrom/Breaking-Captchas/master/breaking%20text%20captchas/assets/screenrecord5.gif)
