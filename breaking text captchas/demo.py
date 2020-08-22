@@ -21,6 +21,9 @@ from collections import Counter
 import random
 
 
+window_text = "Are you a robot?"
+
+
 # Applying thresholding that I have found works best tot increase accuracy
 def threshold(img):
     i = 0
@@ -40,7 +43,6 @@ def threshold(img):
 
 # Load captchas and make predictions, display results
 def main():
-    window_text = "Are you a robot?"
     dataset = "test_captchas"
     HXW = 24
     # Load 10 captchas, prepare the model
