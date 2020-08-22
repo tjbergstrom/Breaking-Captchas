@@ -1,7 +1,14 @@
-# pre_process.py
+# classify.py
 # August 2020
 # Experimenting how to use the trained model to break the captchas
 # And how to translate the output to something useful and meaningful
+#
+# This has optional bools for displaying images, to see how the model is making predictions
+#
+# However this is most useful for processing thousands of test captchas
+# And reporting an accuracy rate, how many the model was able to break
+#
+# Also has some other informational metrics to see how the model is performing
 #
 # source ./venv1/bin/activate
 # python3 -W ignore classify.py
@@ -20,6 +27,7 @@ from imutils import paths
 from PIL import Image
 from collections import Counter
 
+
 dataset = "test_captchas"
 HXW = 24
 data = []
@@ -32,9 +40,8 @@ total_correct = 0
 incorrect_chs = []
 display_montage = False
 display_results = False
-
-
 print()
+
 
 # Load each original captcha
 for img_path in img_paths:
@@ -63,7 +70,7 @@ for img_path in img_paths:
         cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contours = contours[0]
     tmp_data = [] # This will be a list of the extracted images of the chars, after formatting
-    tmp_labels = [] # This will be a list of the predicted chars
+    tmp_labels = [] # This ended up not used here
     boxs = [] # This is the list of raw extracted images of the chars
     labels = [] # This will be for comparing accuracy of each individual char, if a decoding is wrong
     # Make sure the chars are sorted from left to right
@@ -156,6 +163,9 @@ accuracy = (total_correct / len(img_paths)) * 100
 accuracy = str(accuracy) + "%"
 print(total_correct, "correct out of", len(img_paths), accuracy)
 
+
+# This is another interesting metric I wanted to see
+# Which characters A through Z and 1 through 9 were the most and least accurate
 if display_results:
     incorrect_counts = []
     print("\nHow many times each character was predicted incorrectly")
@@ -164,7 +174,6 @@ if display_results:
     incorrect_counts = list(zip(vals, keyz))
     for val in sorted(incorrect_counts):
         print(val)
-
 
 
 

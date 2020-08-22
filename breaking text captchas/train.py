@@ -1,8 +1,9 @@
-
-
-
+# train.py
+# A variation of the scripts I usually run for ML projects
+#
 # source ./venv1/bin/activate
 # python3 -W ignore train.py
+
 
 from sklearn.preprocessing import LabelBinarizer
 from process import Pprocess

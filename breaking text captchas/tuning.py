@@ -1,13 +1,5 @@
-# Ty Bergstrom
-# Monica Heim
 # tuning.py
-# CSCE A415
-# April 23, 2020
-# ML Final Project
 # hypertuning for any model
-# makes testing more efficient
-# choose these parameters from terminal args or for loops
-# instead of crazy editing and commenting out all over the place
 
 
 from keras.callbacks import LearningRateScheduler

@@ -1,10 +1,5 @@
-# Ty Bergstrom
-# Monica Heim
 # results.py
-# CSCE A415
-# April 23, 2020
-# ML Final Project
-# display metrics and plots for any model
+# Display metrics and plots for any model
 
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
