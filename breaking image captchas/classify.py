@@ -4,6 +4,7 @@
 # Dec. 27 2020
 # Currently this is just using some tricks to extract image thumbnails from a captcha
 # And also extract the title text - what boxes it wants you to select
+# Just weeing how to do this before moving on
 
 
 import cv2
@@ -137,11 +138,12 @@ if __name__ == "__main__":
         captcha_txt = extract_txt(img_path)
         if not captcha_txt:
             continue
-        thumbnails, coords = extract_thumbs(img_path)
+        thumbnails = extract_thumbs(img_path)
         if len(thumbnails) < 6:
             continue
         img_path = img_path.split(os.path.sep)[-1]
         expected_selections = list(os.path.splitext(img_path))[0]
+        make_selections(thumbnails, expected_selections)
 
 
 
