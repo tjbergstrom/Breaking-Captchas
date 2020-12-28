@@ -16,8 +16,11 @@ from keras.preprocessing.image import img_to_array
 
 class Select:
 	def __init__(self):
-		self.crosswalk_model = load_model("models/crosswalks.model")
+		self.crosswalks = load_model("models/crosswalks.model")
 		self.traffic_lights = load_model("models/traffic_lights.model")
+		self.fire_hydrants = None
+		self.parking_meters = None
+		self.school_busses = None
 
 
 	def make_selections(self, txt, thumbnails, hxw=24):
@@ -43,9 +46,9 @@ class Select:
 		thumbs, boxs = thumbnails
 		correct = 0
 		for i, box in enumerate(boxs):
-			color = (0,0,0)
+			color = (0, 0, 0)
 			if selections[i]:
-				color = (0,0,255)
+				color = (0, 0, 255)
 			(xo, xn, yo, yn) = box
 			cv2.rectangle(img, (xo, yo), (xn, yn), color, 2)
 			cv2.imshow("", img)
@@ -61,9 +64,10 @@ class Select:
 
 	def get_model(self, txt):
 		if txt == "crosswalks":
-			return self.crosswalk_model
-		if txt == "traffic light":
+			return self.crosswalks
+		if txt == "traffic lights":
 			return self.traffic_lights
+		raise ValueError(f"{txt} not supported")
 
 
 
