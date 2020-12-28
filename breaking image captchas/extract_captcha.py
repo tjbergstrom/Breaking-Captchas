@@ -75,7 +75,7 @@ class Extract:
         return left_x_coords, right_x_coords
 
 
-    def extract_thumbs(img_path):
+    def process(img_path):
         img = cv2.imread(img_path)
         img = imutils.resize(img, width=300)
         Extract.img_show(img, t=600)
@@ -84,11 +84,16 @@ class Extract:
         img = cv2.threshold(img , 225, 255, cv2.THRESH_BINARY)[1]
         contours = cv2.findContours(img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
         img_contours = np.zeros(img.shape)
-        cv2.drawContours(img_contours, contours, -1, (255,255,255), 3)
+        cv2.drawContours(img_contours, contours, -1, (255, 255, 255), 3)
         cv2.imwrite("tmp.png", img_contours)
         img = cv2.imread("tmp.png")
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         Extract.img_show(img, t=600)
+        return img, img_cpy
+
+
+    def extract_thumbs(img_path):
+        img, img_cpy = Extract.process(img_path)
 
         upper_y_coords, lower_y_coords = Extract.y_box_coords(img)
         left_x_coords, right_x_coords = Extract.x_box_coords(img, upper_y_coords, lower_y_coords)
@@ -114,31 +119,61 @@ class Extract:
         img = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
         img = cv2.threshold(img, 0, 255,cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
         details = pytesseract.image_to_data(img, output_type=pytesseract.Output.DICT)
-        txt = [i for i in details.get("text") if len(i) > 2]
+        txt = [i.lower() for i in details.get("text") if len(i) > 2]
         captcha = ""
-        captcha_dictionary = [
-            "crosswalk", "crosswalks",
-            "traffic light", "traffic lights", "traffic", "lights",
-            "fire hydrant", "fire hydrants", "fire", "hydrant", "hydrants",
-            "parking meter", "parking meters",
-            "bus", "busses", "school bus", "school busses",
-        ]
         for t in txt:
-            if t in captcha_dictionary:
-                captcha = t
+            if Extract.captcha_dictionary(t):
+                captcha = Extract.captcha_dictionary(t)
                 break
-        if captcha == "traffic":
-            captcha = "traffic light"
+        if not captcha:
+            return 0
         Extract.img_show(img, t=600)
         cv2.putText(img_cpy, captcha, (10, img_cpy.shape[0]//2), 0, 1, (0, 0, 255), 3)
         Extract.img_show(img_cpy, t=600)
-        return captcha.lower()
+        return captcha
 
 
     def extract_expected(img_path):
         filename = img_path.split(os.path.sep)[-1]
         expected = os.path.splitext(filename)[0]
         return [int(i) for i in expected]
+
+
+    def captcha_dictionary(txt):
+        captchas = {
+            "crosswalk"     : "crosswalks",
+            "crosswalks"    : "crosswalks",
+            "traffic"       : "traffic lights",
+            "twaffic"       : "traffic lights",
+            "taffic"        : "traffic lights",
+            "lights"        : "traffic lights",
+            "traffic light" : "traffic lights",
+            "traffic lights": "traffic lights",
+            "fire"          : "fire hydrants",
+            "hydrant"       : "fire hydrants",
+            "hydrants"      : "fire hydrants",
+            "fire hydrant"  : "fire hydrants",
+            "fire hydrants" : "fire hydrants",
+            "parking"       : "parking meters",
+            "meter"         : "parking meters",
+            "meters"        : "parking meters",
+            "parking meter" : "parking meters",
+            "parking meters": "parking meters",
+            "school"        : "school busses",
+            "bus"           : "school busses",
+            "buses"         : "school busses",
+            "busses"        : "school busses",
+            "school bus"    : "school busses",
+            "school buses"  : "school busses",
+            "school busses" : "school busses",
+        }
+        implemented = [
+            "crosswalks", "traffic lights",
+        ]
+        if txt in captchas:
+            if captchas.get(txt) in implemented:
+                return captchas.get(txt)
+        return 0
 
 
 
